@@ -8,8 +8,6 @@ public class Main {
 	    System.out.println(welcomeText);
 
 
-        Array arrayEx = new Array();
-        arrayEx.run();
 
     }
 }
