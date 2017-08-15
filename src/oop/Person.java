@@ -10,5 +10,11 @@ public abstract class Person {
         this.name = name;
     }
 
+    public Person(String name) {
+        this.name = name;
+    }
+
     abstract int getSalary(); //если класс абстрактный, то класс тоже должен быть абстрактным
+    //у абстрактного метода нет тела
+    //экземпляр абстрактного класса создать не можем
 }

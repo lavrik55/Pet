@@ -10,6 +10,10 @@ public class Manager extends Person {
         this.projectsCount = projectsCount;
     }
 
+    public Manager(String name) {
+        super(name);
+    }
+
     @Override
     int getSalary() {
         return projectsCount*100;

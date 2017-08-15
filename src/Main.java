@@ -20,18 +20,18 @@ public class Main {
         //получить случайное целое число от 0 до 19
         int x = rand.nextInt(20);
 
-        Person person = new Manager();
+        Person person = new Manager("Сергей");
         int projectsCount = ((Manager) person).getProjectsCount();
-        Manager manager1 = new Manager();
+        Manager manager1 = new Manager("Еще один");
         manager1.setProjectsCount(10);
-        Programmer programmer1 = new Programmer();
+        Programmer programmer1 = new Programmer("программист какой-то");
         programmer1.setLinesOfCode(200);
 
         List<Person> personList = new ArrayList<>();
         personList.add(manager1);
         personList.add(programmer1);
         for (Person p : personList) {
-            p.toString() + " " + p.g
+            System.out.println(p.toString() + " " + p.getName());
         }
     }
 }

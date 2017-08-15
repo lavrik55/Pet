@@ -10,6 +10,10 @@ public class Programmer extends Person {
         this.linesOfCode = linesOfCode;
     }
 
+    public Programmer(String name) {
+        super(name); //- возможность обратиться к конструктору родительского класса
+    }
+
     @Override
     int getSalary() {
         return linesOfCode*100;
