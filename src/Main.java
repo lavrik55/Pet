@@ -1,6 +1,8 @@
 import oop.Manager;
-import oop.Person;
+import oop.AbstractPerson;
 import oop.Programmer;
+import threads.ThreadWithClass;
+import threads.ThreadWithInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,18 +22,37 @@ public class Main {
         //получить случайное целое число от 0 до 19
         int x = rand.nextInt(20);
 
-        Person person = new Manager("Сергей");
-        int projectsCount = ((Manager) person).getProjectsCount();
-        Manager manager1 = new Manager("Еще один");
-        manager1.setProjectsCount(10);
-        Programmer programmer1 = new Programmer("программист какой-то");
-        programmer1.setLinesOfCode(200);
+        new ThreadWithInterface();
+        new ThreadWithClass();
 
-        List<Person> personList = new ArrayList<>();
+        try {
+            for (int i = 0; i < 5; i++) {
+                System.out.println("Главный поток:" + i);
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Главный поток завершен.");
+        }
+
+        Manager man1 = new Manager("Иван", "Петров");
+        man1.sayHello();
+        man1.payForCorpor(10);
+        man1.concrMethod();
+        man1.concrMethod2();
+
+        AbstractPerson person = new Manager("Сергей", "Лавров");
+        int projectsCount = ((Manager) person).getProjectsCount();
+        Manager manager1 = new Manager("Еще один", "хороший");
+        manager1.setProjectsCount(10);
+        Programmer programmer1 = new Programmer("программист какой-то", "lastname");
+        programmer1.setLinesOfCode(200);
+        //programmer1.getSalary()
+
+        List<AbstractPerson> personList = new ArrayList<>();
         personList.add(manager1);
         personList.add(programmer1);
-        for (Person p : personList) {
-            System.out.println(p.toString() + " " + p.getName());
+        for (AbstractPerson p : personList) {
+            System.out.println(p.toString() + " " + p.getFirstName());
         }
     }
 }

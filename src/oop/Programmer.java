@@ -1,6 +1,6 @@
 package oop;
 
-public class Programmer extends Person {
+public class Programmer extends AbstractPerson {
 
     private int linesOfCode;
     public int getLinesOfCode() {
@@ -10,14 +10,15 @@ public class Programmer extends Person {
         this.linesOfCode = linesOfCode;
     }
 
-    public Programmer(String name) {
-        super(name); //- возможность обратиться к конструктору родительского класса
+    public Programmer(String firstName, String lastName) {
+        super(firstName, lastName);
     }
 
     @Override
-    int getSalary() {
+    public int getSalary() {
         return linesOfCode*100;
     }
+    public int getSalary(int k) { return k*100; }
 
     @Override
     public String toString() {
