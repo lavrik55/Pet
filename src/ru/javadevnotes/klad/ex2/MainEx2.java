@@ -1,12 +1,14 @@
 package ru.javadevnotes.klad.ex2;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MainEx2 {
     public static void main(String[] args) {
@@ -15,9 +17,20 @@ public class MainEx2 {
 
         final String fileName = "klad.ex2.txt";
 
-        List<String> list = readList_6(fileName);
-        for(String s : list) {
+        //List<String> list = readList_6(fileName);
+        //List<String> list = readListClassic(fileName);
+        List<String> list = readListLines(fileName);
+        /*for(String s : list) {
             System.out.println(s);
+        }*/
+        list.forEach(System.out::println);
+
+        //Самый тру метод Java 8
+        //read file into stream, try-with-resources
+        try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
+            stream.forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -61,19 +74,17 @@ public class MainEx2 {
     }
 
     /**
-     * Java 8 try-with-resources
-     * https://www.mkyong.com/java8/java-8-stream-read-a-file-line-by-line/
+     * Java 8 lines
      */
-    /*private static List<String> readListClassic(String fileName) {
+    private static List<String> readListLines(String fileName) {
         List<String> result = new LinkedList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                result.add(line);
-            }
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
+            //br returns as stream and convert it into a List
+            result = br.lines().collect(Collectors.toList());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
         return result;
-    }*/
+    }
 }
