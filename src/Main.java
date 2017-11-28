@@ -1,8 +1,8 @@
-import oop.Manager;
-import oop.AbstractPerson;
-import oop.Programmer;
-import threads.ThreadWithClass;
-import threads.ThreadWithInterface;
+import ru.javadevnotes.oop.Manager;
+import ru.javadevnotes.oop.AbstractPerson;
+import ru.javadevnotes.oop.Programmer;
+import ru.javadevnotes.threads.ThreadWithClass;
+import ru.javadevnotes.threads.ThreadWithInterface;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package bases;
+package ru.javadevnotes.bases;
 
 public class PrimitiveTypes {
 

@@ -1,4 +1,4 @@
-package threads;
+package ru.javadevnotes.threads;
 
 public class ThreadWithInterface implements Runnable {
 

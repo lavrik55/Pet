@@ -1,4 +1,4 @@
-package oop;
+package ru.javadevnotes.oop;
 
 public abstract class AbstractPerson {
 
