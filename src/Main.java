@@ -16,11 +16,10 @@ public class Main {
     //константы всегда большими буквами
     private final static String WELCOME_TEXT = "Да будут базовые знания!"; //константа, переменная не может менять своего значения в процессе выполнения программы
 
-
     public static void main(String[] args) {
 	    System.out.println(WELCOME_TEXT);
 
-
+        System.out.println();
         Random rand = new Random();
         //получить случайное целое число от 0 до 19
         int x = rand.nextInt(20);
