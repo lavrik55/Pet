@@ -1,10 +1,11 @@
-package ru.javadevnotes.klad.ex2;
+package ru.javadevnotes.klad.ex2_3;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,18 +16,17 @@ public class MainEx2 {
         System.out.println("Тема: тестовый файл в Java 6.");
         System.out.println("-----");
 
-        final String fileName = "klad.ex2.txt";
+        final String fileName = "klad.ex2_3.txt";
 
         //List<String> list = readList_6(fileName);
-        //List<String> list = readListClassic(fileName);
-        List<String> list = readListLines(fileName);
+        //List<String> list = readList_7(fileName);
+        List<String> list = readList_7_2(fileName);
         /*for(String s : list) {
             System.out.println(s);
         }*/
         list.forEach(System.out::println);
 
-        //Самый тру метод Java 8
-        //read file into stream, try-with-resources
+        //read lines into stream, try-with-resources
         try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
             stream.forEach(System.out::println);
         } catch (IOException e) {
@@ -58,9 +58,9 @@ public class MainEx2 {
     }
 
     /**
-     * Java 8 try-with-resources
+     * Java 7 try-with-resources
      */
-    private static List<String> readListClassic(String fileName) {
+    private static List<String> readList_7(String fileName) {
         List<String> result = new LinkedList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -74,9 +74,9 @@ public class MainEx2 {
     }
 
     /**
-     * Java 8 lines
+     * Java 7 lines()
      */
-    private static List<String> readListLines(String fileName) {
+    private static List<String> readList_7_1(String fileName) {
         List<String> result = new LinkedList<>();
         try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
             //br returns as stream and convert it into a List
@@ -86,5 +86,17 @@ public class MainEx2 {
             e.printStackTrace();
         }
         return result;
+    }
+
+    /**
+     * Java 7 readAllLines()
+     */
+    private static List<String> readList_7_2(String fileName) {
+        try {
+            return Files.readAllLines(Paths.get(fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
     }
 }
