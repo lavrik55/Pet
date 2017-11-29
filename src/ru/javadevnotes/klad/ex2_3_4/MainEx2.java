@@ -1,8 +1,7 @@
-package ru.javadevnotes.klad.ex2_3;
+package ru.javadevnotes.klad.ex2_3_4;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
@@ -13,10 +12,10 @@ import java.util.stream.Stream;
 
 public class MainEx2 {
     public static void main(String[] args) {
-        System.out.println("Тема: тестовый файл в Java 6.");
+        System.out.println("Тема: чтение текстового файла в Java 6, Java 7 c try-with-resources, Files.lines, с разной кодировкой.");
         System.out.println("-----");
 
-        final String fileName = "klad.ex2_3.txt";
+        final String fileName = "klad.ex2_3_4.txt";
 
         //List<String> list = readList_6(fileName);
         //List<String> list = readList_7(fileName);
@@ -27,7 +26,7 @@ public class MainEx2 {
         list.forEach(System.out::println);
 
         //read lines into stream, try-with-resources
-        try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
+        try (Stream<String> stream = Files.lines(Paths.get(fileName))) { //по-умолчнию в UTF-8
             stream.forEach(System.out::println);
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,7 +61,9 @@ public class MainEx2 {
      */
     private static List<String> readList_7(String fileName) {
         List<String> result = new LinkedList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        //try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        try (InputStreamReader isr = new InputStreamReader(new FileInputStream(fileName), Charset.forName("UTF-8")); //если нужно указать кодировку
+            BufferedReader br = new BufferedReader(isr)) {
             String line;
             while ((line = br.readLine()) != null) {
                 result.add(line);
@@ -93,7 +94,7 @@ public class MainEx2 {
      */
     private static List<String> readList_7_2(String fileName) {
         try {
-            return Files.readAllLines(Paths.get(fileName));
+            return Files.readAllLines(Paths.get(fileName), Charset.forName("cp1251"));
         } catch (IOException e) {
             e.printStackTrace();
         }
