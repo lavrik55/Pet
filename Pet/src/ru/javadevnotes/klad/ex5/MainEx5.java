@@ -21,5 +21,6 @@ public class MainEx5 {
             fm.format(s, new Date(), 99.8, "AC12345");
             fm.format(s, new Date(), 99.8, "AC12345");
         }
+
     }
 }
