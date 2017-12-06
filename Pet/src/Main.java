@@ -20,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
 	    System.out.println(WELCOME_TEXT);
 
+	    Manager m1 = new Manager("asdf");
 	    LocalDate ld = LocalDate.of(2018, Month.APRIL, 30);
 	    ld = ld.plusDays(2);
 	    ld = ld.plusYears(3);

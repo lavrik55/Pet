@@ -1,6 +1,6 @@
 package ru.javadevnotes.oop;
 
-public abstract class AbstractPerson {
+public abstract class AbstractPerson /*implements Roarable*/ {
 
     private String firstName;
     public String getFirstName() {
@@ -18,6 +18,9 @@ public abstract class AbstractPerson {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+    public AbstractPerson() {
+        System.out.println("вызов конструктора абстрактоного класса");
+    }
 
     /**
      * Абстрактный метод, должен быть переопределен
@@ -27,5 +30,9 @@ public abstract class AbstractPerson {
 
     public void sayHello() {
         System.out.println("Абстрактный класс говорит привет.");
+    }
+
+    public final void sayZig() {
+        System.out.println("Абстрактный класс говорит zig.");
     }
 }

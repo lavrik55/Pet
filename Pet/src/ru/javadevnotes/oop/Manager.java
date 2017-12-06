@@ -13,6 +13,10 @@ public final class Manager extends AbstractPerson implements Payable {
     public Manager(String firstName, String lastName) {
         super(firstName, lastName);
     }
+    public Manager(String lastName) {
+        super();
+        System.out.println("вызов конструктора конкретного класса");
+    }
 
     @Override
     int getSalary() {
@@ -45,4 +49,9 @@ public final class Manager extends AbstractPerson implements Payable {
     public void concrMethod2() {
         System.out.println("Вызов переопределённого дефолтного метода concrMethod2 интерфейса из класса.");
     }
+
+    /*public String sayZig() {
+        System.out.println("");
+        return "";
+    }*/
 }

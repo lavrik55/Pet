@@ -10,6 +10,7 @@ public interface Payable {
 
     //можно и совместно используемые контакты использовать
     public int WOMEN_COUNT = 15;
+    int TEST = 0;
 
     /**
      * В Java 8 теперь можно создавать интерфейсы с конкретными методам, тем самым не нарушая
@@ -22,4 +23,6 @@ public interface Payable {
     default void concrMethod2() {
         System.out.println("Вызов дефолтного метода concrMethod2 интерфейса в самом интерфейса.");
     }
+
+
 }
